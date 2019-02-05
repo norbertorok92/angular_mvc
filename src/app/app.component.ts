@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { RestService } from './rest.service';
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'My First Angular App';
+  title = 'MPA APP';
+  userId = Number(localStorage.getItem('loggedIn'));
+  constructor(
+    private _rest: RestService
+  ) { }
 }

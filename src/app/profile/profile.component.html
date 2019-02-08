@@ -1,0 +1,73 @@
+<div class="row mt-3">
+    <div class="col-md-8 col-centered">
+      <div class="row mt-5">
+        <div class="col-md-12 mb-3">
+
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">{{ userProfile.username }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted"><b>Email:</b> {{ userProfile.email }}</h6>
+                <h6 class="card-subtitle mb-2 text-muted"><b>Role:</b> {{ userProfile.user_role }}</h6>
+                <span *ngIf="
+                  userProfile.id === loggedInUserId &&
+                  userProfile.user_role === userProfile.subscribedTo &&
+                  userProfile.user_role !== 'admin'
+                " class="card-subtitle mb-2 text-muted">
+                  Want to become {{subscription[userProfile.user_role]}} ?
+                  <button class="btn btn-sm btn-link" type="submit" (click)="subscribe()">Subscribe now</button>
+                </span>
+
+                <div *ngIf="userProfile.id === loggedInUserId && userProfile.user_role !== userProfile.subscribedTo">
+                  <span class="card-subtitle mb-2 text-muted">
+                    Your subscription to become <b>{{userProfile.subscribedTo}}</b> is analyzed by admins.
+                  </span>
+
+                  <div class="d-flex flex-row-reverse" *ngIf="userRole !== 'visitor'">
+                    <a class="btn btn-info btn-sm" style="float: right;" href="#addPost" data-toggle="collapse"><span class="fas fa-plus"></span> Add Post</a>
+                  </div>
+                  <app-add-posts (fetchData)="fetchData()"></app-add-posts>
+                </div>
+
+                  <div class=mt-3>
+                  <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li *ngIf="posts.length" class="nav-item">
+                      <a class="nav-link active" id="posts-tab" data-toggle="tab" href="#posts" role="tab" aria-controls="posts" aria-selected="true">
+                        Posts <span class="badge badge-success">{{posts.length}}</span>
+                      </a>
+                    </li>
+                    <li *ngIf="events.length" class="nav-item">
+                      <a class="nav-link" id="events-tab" data-toggle="tab" href="#events" role="tab" aria-controls="events" aria-selected="false">
+                        Events <span class="badge badge-success">{{events.length}}</span>
+                      </a>
+                    </li>
+                  </ul>
+                  <div class="tab-content" id="myTabContent">
+
+                    <div class="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="posts-tab">
+                      <div class="row mt-5">
+                        <div class="col-md-12 mb-3" *ngFor="let post of posts">
+                          <app-posts [post]="post" (fetchData)="fetchData()"></app-posts>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="events" role="tabpanel" aria-labelledby="events-tab">
+                      <div class="row mt-5">
+                        <div class="col-md-6 mb-3" *ngFor="let event of events">
+                          <app-events [event]="event" (fetchData)="fetchData()"></app-events>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+
+        </div>
+      </div>
+  </div>
+</div>
+

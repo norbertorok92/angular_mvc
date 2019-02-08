@@ -1,0 +1,40 @@
+
+<!-- Modal -->
+<div class="modal fade" id="editPostModal-{{postData.id}}" tabindex="-1" role="dialog" aria-labelledby="editPostModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editPostModalLabel">Edit Your Post</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="card-body">
+          <div class="form-label-group">
+            <input type="text" id="inputTitle" name="title" class="form-control" placeholder="Title" required="" autofocus="" [(ngModel)]="postData.title">
+            <label for="inputTitle">Title</label>
+          </div>
+          <hr>
+          <div class="form-label-group">
+            <input type="text" id="inputContent" name="content" class="form-control" placeholder="Content" required="" autofocus="" [(ngModel)]="postData.content">
+            <label for="inputContent">Content</label>
+          </div>
+          <div *ngIf="postData.code_snippet">
+            <hr>
+            <div class="form-label-group">
+              <textarea type="text" id="inputCode" name="code" class="form-control" placeholder="CodeSnippet" required="" autofocus="" [(ngModel)]="postData.code_snippet"></textarea>
+              <label for="inputCode">Code Snippet</label>
+            </div>
+          </div>
+
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success btn-sm" (click)="editPost(postData.id)">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

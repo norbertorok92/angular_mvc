@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { RestService } from './rest.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'My First Angular App';
+  title = 'MPA APP';
+
+  constructor(
+    private _rest: RestService,
+    private _router: Router
+  ) { }
+
+  goToProfile() {
+    const userId = Number(localStorage.getItem('loggedIn'));
+    this._router.navigate([`/profile/${userId}`]);
+  }
 }

@@ -1,0 +1,12 @@
+<div class="card">
+  <div class="card-header">{{event.title}}
+    <span class="float-right" *ngIf="userId === event.author.id">
+      <a class="mr-2 text-danger" (click)="deleteEvent(event.id)"><span class="fas fa-trash-alt"></span></a>
+    </span>
+  </div>
+  <div class="card-body" style="padding: 5px 10px 10px;">
+    <small class="text-muted">Posted by: {{event.author.username}}</small>
+    <p class="card-text">{{event.content}}</p>
+    <small class="text-muted float-right">It's happening on: {{event.event_date | date:'short'}}</small>
+  </div>
+</div>

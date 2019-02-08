@@ -1,0 +1,28 @@
+<div id="addPost" class="collapse">
+  <div class="content-section mt-3 card">
+    <form class="card-body">
+      <div class="form-label-group">
+        <input type="text" id="inputTitle" name="title" class="form-control" placeholder="Title" required="" autofocus="" [(ngModel)]="createPostData.title">
+        <label for="inputTitle">Title</label>
+      </div>
+
+      <div class="form-label-group">
+        <input type="text" id="inputContent" name="content" class="form-control" placeholder="Content" required="" autofocus="" [(ngModel)]="createPostData.content">
+        <label for="inputContent">Content</label>
+      </div>
+
+      <div class="has-code-checkbox">
+        <input type="checkbox" id="hasCode" data-toggle="collapse" data-target="#hasCodeSnippet">
+        <label for="hasCode">I wanna share a code snippet</label>
+      </div>
+      <div id='hasCodeSnippet' class='collapse'>
+        <div class="form-label-group">
+          <textarea type="text" id="inputCode" name="code" class="form-control" placeholder="CodeSnippet" required="" autofocus="" [(ngModel)]="createPostData.code_snippet"></textarea>
+          <label for="inputCode">Code Snippet</label>
+        </div>
+      </div>
+
+      <button class="btn btn-sm btn-primary" type="submit" (click)="addPost()">Post</button>
+    </form>
+  </div>
+</div>

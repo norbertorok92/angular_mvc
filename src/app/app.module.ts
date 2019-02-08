@@ -14,6 +14,8 @@ import { AuthGuard } from './auth.guard';
 import { ProfileComponent } from './profile/profile.component';
 import { PostsComponent } from './posts/posts.component';
 import { EventsComponent } from './events/events.component';
+import { AddPostsComponent } from './add-posts/add-posts.component';
+import { EditPostsComponent } from './edit-posts/edit-posts.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { EventsComponent } from './events/events.component';
     HomeComponent,
     ProfileComponent,
     PostsComponent,
-    EventsComponent
+    EventsComponent,
+    AddPostsComponent,
+    EditPostsComponent
   ],
   imports: [
     BrowserModule,

@@ -3,11 +3,12 @@
     <div class="dropdown" *ngIf="userId === post.author.id">
       <a class="mr-2 float-right" style="color: #AAAAAA; cursor: pointer;" data-toggle="dropdown" id="postMoreOptions" aria-haspopup="true" aria-expanded="false"><span class="fas fa-ellipsis-v"></span></a>
       <div class="dropdown-menu" aria-labelledby="postMoreOptions">
-        <button class="dropdown-item text-info" type="button"><span class="fas fa-pencil-alt mr-3"></span>Edit</button>
-        <button class="dropdown-item text-danger" type="button" (click)="deletePost(post.id)"><span style="color:red;" class="fas fa-trash-alt mr-3"></span>Delete</button>
+        <button class="dropdown-item text-info" type="button" data-toggle="modal" [attr.data-target]="'#editPostModal-' + post.id" data-post="post"><span class="fas fa-pencil-alt mr-3"></span>Edit</button>
+        <button class="dropdown-item text-danger" type="button" (click)="deletePost(post.id)"><span class="fas fa-trash-alt mr-3"></span>Delete</button>
       </div>
+      <app-edit-posts [editPostData]="post" (fetchData)="fetchAllData()"></app-edit-posts>
     </div>
-    <h5 class="card-title">{{post.title}}</h5>
+    <h4 class="card-title">{{post.title}}</h4>
     <small class="text-muted float-right">{{post.date_posted | date:'short'}}</small>
     <small class="text-muted">
       Posted by:
@@ -39,7 +40,7 @@
     </div>
 
   </div>
-  <div class="card-footer">
+  <div class="card-footer" *ngIf="userRole !== 'visitor'">
     <textarea name="addComment" rows="1" class="form-control form-control-sm" style="width: 93%; display: inline-block;" placeholder="Write a comment..." [(ngModel)]="commentData.content"></textarea>
     <button type="submit" class="btn btn-sm" style="width: 5%; float: right; color: rgb(83, 138, 240)" (click)="addComment(post.id)" [disabled]="!commentData.content"><span class="fas fa-reply"></span></button>
   </div>

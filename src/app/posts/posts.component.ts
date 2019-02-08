@@ -13,10 +13,15 @@ export class PostsComponent implements OnInit {
 
   commentData = {};
   userId = Number(localStorage.getItem('loggedIn'));
+  userRole = localStorage.getItem('userRole');
 
   constructor(private _rest: RestService) { }
 
   ngOnInit() {
+  }
+
+  fetchAllData() {
+    this.fetchData.emit();
   }
 
   addComment(postId) {

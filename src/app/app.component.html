@@ -14,7 +14,7 @@
       <a class="nav-link" *ngIf="!_rest.isLoggedIn()" routerLink="/login" routerLinkActive="active">Login</a>
       <a class="nav-link" *ngIf="!_rest.isLoggedIn()" routerLink="/register" routerLinkActive="active">Register</a>
 
-      <a class="nav-link" *ngIf="_rest.isLoggedIn()" routerLink="/profile/{{userId}}">Profile</a>
+      <a class="nav-link" style="cursor: pointer;" *ngIf="_rest.isLoggedIn()" (click)="goToProfile()">Profile</a>
       <a class="nav-link" style="cursor: pointer;" *ngIf="_rest.isLoggedIn()" (click)="_rest.logoutUser()">Logout</a>
     </ul>
   </div>

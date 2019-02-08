@@ -14,6 +14,7 @@ export class ProfileComponent implements OnInit {
   events = [];
   visitedProfile = null;
   loggedInUserId = Number(localStorage.getItem('loggedIn'));
+  userRole = localStorage.getItem('userRole');
   subscription = {
     'visitor': 'member',
     'member': 'admin'

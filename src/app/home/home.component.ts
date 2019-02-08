@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
   events = [];
   commentData = {};
   userId = null;
+  userRole = localStorage.getItem('userRole');
   constructor(private _rest: RestService) { }
 
   ngOnInit() {

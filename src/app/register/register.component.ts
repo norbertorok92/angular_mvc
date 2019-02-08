@@ -25,6 +25,7 @@ export class RegisterComponent implements OnInit {
       .subscribe(
         res => {
           localStorage.setItem('loggedIn', res.userID);
+          localStorage.setItem('userRole', res.userRole);
           this._router.navigate(['/home']);
         },
         err => console.log(err)

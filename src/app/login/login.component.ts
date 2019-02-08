@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         res => {
           localStorage.setItem('loggedIn', res.userID);
+          localStorage.setItem('userRole', res.userRole);
           this._router.navigate(['/home']);
         },
         err => this.errMsg = `Ooops daisy... ${err.statusText}, call an adult`

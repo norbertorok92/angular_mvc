@@ -35,6 +35,15 @@ export class RestService {
     this._router.navigate(['/login']);
   }
 // POSTS
+  addPost(postData) {
+    const loggedInUserId = localStorage.getItem('loggedIn');
+    return this.http.post<any>(this._postsUrl + `/${loggedInUserId}`, postData);
+  }
+
+  editPost(postId, postData) {
+    return this.http.put<any>(this._postsUrl + `/${postId}`, postData);
+  }
+
   getPosts() {
     return this.http.get<any>(this._postsUrl);
   }
@@ -62,6 +71,10 @@ export class RestService {
 // USERS
   getUser(userId) {
     return this.http.get<any>(this._usersUrl + `/${userId}`);
+  }
+
+  getOneUser(userId) {
+
   }
 
   subscribe(userId) {

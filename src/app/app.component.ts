@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RestService } from './rest.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -9,8 +10,14 @@ import { RestService } from './rest.service';
 })
 export class AppComponent {
   title = 'MPA APP';
-  userId = Number(localStorage.getItem('loggedIn'));
+
   constructor(
-    private _rest: RestService
+    private _rest: RestService,
+    private _router: Router
   ) { }
+
+  goToProfile() {
+    const userId = Number(localStorage.getItem('loggedIn'));
+    this._router.navigate([`/profile/${userId}`]);
+  }
 }
